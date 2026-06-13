@@ -13,7 +13,7 @@ interface BackFaceProps {
 export function BackFace({ isFlipped, unlockedStep, onFlip, onUnlock }: BackFaceProps) {
   return (
     <div
-      className={`absolute inset-0 w-full h-full rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden bg-zinc-950 border-[0.5px] border-zinc-700/50 flex flex-col p-6 text-center cursor-pointer ${!isFlipped ? 'pointer-events-none' : ''
+      className={`absolute inset-0 w-full h-full rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] overflow-hidden bg-zinc-950 border-[0.5px] border-zinc-700/50 flex flex-col p-5 text-center cursor-pointer ${!isFlipped ? 'pointer-events-none' : ''
         }`}
       style={{
         backfaceVisibility: "hidden",
@@ -34,7 +34,7 @@ export function BackFace({ isFlipped, unlockedStep, onFlip, onUnlock }: BackFace
         <div className="absolute top-0 left-0 w-[200%] h-12 bg-linear-to-b from-transparent via-zinc-400/10 to-transparent blur-[5px] animate-shine" style={{ animationDelay: '2.5s' }} />
       </div>
 
-      <div className="mt-1.5 relative z-10">
+      <div className="mt-1 relative z-10">
         <h3 className="text-zinc-300 text-[11px] font-sans font-light tracking-[0.3em] uppercase drop-shadow-sm">
           VIP ACCESS GRANTED
         </h3>
@@ -45,25 +45,25 @@ export function BackFace({ isFlipped, unlockedStep, onFlip, onUnlock }: BackFace
       </div>
 
       <div className="flex-1 flex flex-col items-center w-full my-2.5 relative z-10 bg-[#FFF8E7] rounded-xl p-3.5 shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] border border-zinc-300/80 overflow-hidden">
-        <p className="text-zinc-950 text-[9px] leading-relaxed font-sans font-medium tracking-wide mb-2.5 text-center px-1">
+        <p className="text-zinc-950 text-[9.5px] leading-relaxed font-sans font-semibold tracking-wide mb-2 text-center px-1">
           &quot;Saengil chukahamnida! 🤍 Berikut akses eksklusif VIP rute kencan kita hari ini.&quot;
         </p>
 
         <div className="w-full h-px bg-zinc-300/80 mb-2.5" />
 
-        <div className="flex flex-col space-y-3 w-full text-left px-1">
+        <div className="flex flex-col space-y-3.5 w-full text-left px-1">
           {ITINERARY.map((item, index) => {
             const isUnlocked = unlockedStep > index;
             return (
-              <div key={item.id} className="flex items-start gap-2.5">
-                <div className={`w-4.5 h-4.5 mt-0.5 rounded-full flex items-center justify-center shrink-0 border transition-all duration-500 ${isUnlocked
+              <div key={item.id} className="flex items-start gap-3">
+                <div className={`w-5 h-5 mt-0.5 rounded-full flex items-center justify-center shrink-0 border transition-all duration-500 ${isUnlocked
                   ? 'bg-linear-to-br from-zinc-700 to-zinc-950 border-zinc-400 shadow-[0_0_8px_rgba(161,161,170,0.6)]'
                   : 'bg-zinc-200/50 border-zinc-300'
                   }`}>
                   {isUnlocked ? (
-                    <span className="text-[7px]">✨</span>
+                    <span className="text-[7.5px]">✨</span>
                   ) : (
-                    <span className="text-[7px] opacity-40 grayscale">🪄</span>
+                    <span className="text-[7.5px] opacity-40 grayscale">🪄</span>
                   )}
                 </div>
 
@@ -72,24 +72,21 @@ export function BackFace({ isFlipped, unlockedStep, onFlip, onUnlock }: BackFace
                   : 'opacity-70 blur-[0.3px] select-none grayscale'
                   }`}>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-zinc-900 font-mono font-bold text-[8px] tracking-wider bg-zinc-200/60 px-1.5 rounded-sm leading-none py-0.5">
-                      {item.time}
-                    </span>
-                    <span className="text-zinc-500 font-sans font-bold text-[7px] tracking-widest uppercase leading-none truncate">
+                    <span className="text-zinc-500 font-sans font-bold text-[7.5px] tracking-widest uppercase leading-none truncate">
                       {item.theme}
                     </span>
                   </div>
 
-                  <div className="text-zinc-900 font-sans font-bold text-[10px] tracking-wider uppercase mt-1 drop-shadow-sm leading-none flex items-center gap-1">
+                  <div className="text-zinc-900 font-sans font-bold text-[11px] tracking-wider uppercase mt-1 drop-shadow-sm leading-none flex items-center gap-1.5">
                     {isUnlocked ? item.name : (
                       <>
-                        <Lock className="w-2.5 h-2.5 text-zinc-600" />
+                        <Lock className="w-3 h-3 text-zinc-600" />
                         <span className="text-zinc-600">LOCKED STAGE</span>
                       </>
                     )}
                   </div>
 
-                  <div className="text-zinc-600 font-sans font-medium text-[7.5px] tracking-wide leading-snug mt-1 pr-1 line-clamp-1">
+                  <div className="text-zinc-600 font-sans font-medium text-[7.5px] tracking-wide leading-snug mt-1 pr-1">
                     {isUnlocked ? item.desc : "Selesaikan destinasi sebelumnya."}
                   </div>
                 </div>

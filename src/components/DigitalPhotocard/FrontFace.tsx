@@ -27,7 +27,7 @@ export function FrontFace({ isFlipped, onFlip }: FrontFaceProps) {
         <span className="text-zinc-600 text-xs">Loading Photo...</span>
       </div>
       <Image
-        src="/images/girlfriend-backup.jpg"
+        src="/images/girlfriend.jpg"
         alt={GIRLFRIEND_NAME}
         fill
         className="object-cover z-0"
@@ -48,7 +48,7 @@ export function FrontFace({ isFlipped, onFlip }: FrontFaceProps) {
           <p className="text-zinc-300 text-[9px] font-sans font-light tracking-[0.2em] uppercase opacity-90">
             EXO PLANET {BIRTHDAY_AGE} Birthday Encore
           </p>
-          <h2 className="text-zinc-50 text-[1.4rem] font-sans font-light tracking-[0.15em] drop-shadow-md uppercase leading-none pb-1">
+          <h2 className="text-zinc-50 text-[1.4rem] font-sans font-bold tracking-[0.15em] drop-shadow-md uppercase leading-none pb-1">
             {GIRLFRIEND_NAME}
           </h2>
           <div className="flex justify-between items-end pt-2 w-full border-t border-zinc-700/50">
