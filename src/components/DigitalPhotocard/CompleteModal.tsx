@@ -17,7 +17,7 @@ export function CompleteModal({ onClose }: CompleteModalProps) {
             EXO PLANET ENCORE
           </h3>
           <p className="text-zinc-700 text-[11px] leading-relaxed font-medium mb-6 px-2">
-            Seluruh akses VIP telah terbuka! Segera bersiap dengan outfit terbaikmu untuk memulai rute kencan hari ini. Hubungi Ibang saat kamu sudah siap untuk dijemput.
+            EXO PLANET ENCORE successfully completed!✨Prepare yourself for one last Silver Ocean experience to close the night.
             <br /><br />
             <span className="italic font-light">&quot;Let&apos;s make an unforgettable Encore Stage! 🤍&quot;</span>
           </p>
@@ -27,7 +27,7 @@ export function CompleteModal({ onClose }: CompleteModalProps) {
             className="w-full bg-zinc-900 hover:bg-zinc-800 text-white rounded-xl h-11 tracking-widest font-light transition-all shadow-lg"
             onClick={onClose}
           >
-            TUTUP & BERSIAP
+            TUTUP
           </Button>
         </div>
       </div>
