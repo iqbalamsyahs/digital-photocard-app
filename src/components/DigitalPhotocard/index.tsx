@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FrontFace } from "./FrontFace";
 import { BackFace } from "./BackFace";
 import { CompleteModal } from "./CompleteModal";
@@ -11,11 +11,35 @@ export default function DigitalPhotocard() {
   const [unlockedStep, setUnlockedStep] = useState(1);
   const [showModal, setShowModal] = useState(false);
 
+  // Load progress from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("unlockedStep");
+      if (saved) {
+        const parsed = parseInt(saved, 10);
+        if (!isNaN(parsed) && parsed >= 1 && parsed <= ITINERARY.length) {
+          // Defer state update to avoid synchronous cascading renders warning
+          setTimeout(() => {
+            setUnlockedStep(parsed);
+          }, 0);
+        }
+      }
+    } catch (e) {
+      console.error("Failed to load unlocked step from localStorage:", e);
+    }
+  }, []);
+
   const handleUnlock = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation(); // Mencegah event bubbling
     if (unlockedStep < ITINERARY.length) {
-      setUnlockedStep((prev) => prev + 1);
+      const nextStep = unlockedStep + 1;
+      setUnlockedStep(nextStep);
+      try {
+        localStorage.setItem("unlockedStep", String(nextStep));
+      } catch (e) {
+        console.error("Failed to save unlocked step to localStorage:", e);
+      }
     } else {
       setShowModal(true);
     }
