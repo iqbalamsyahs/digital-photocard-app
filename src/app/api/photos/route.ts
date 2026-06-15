@@ -14,8 +14,8 @@ export async function GET() {
       mtime: blob.uploadedAt.getTime(),
     }));
 
-    // Sort by most recent first
-    imageFiles.sort((a, b) => b.mtime - a.mtime);
+    // Sort by oldest first (terlama ke terbaru)
+    imageFiles.sort((a, b) => a.mtime - b.mtime);
 
     return NextResponse.json({ photos: imageFiles.map(f => f.url) });
   } catch (error) {
