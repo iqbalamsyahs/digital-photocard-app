@@ -15,11 +15,11 @@ export async function POST(req: NextRequest) {
     for (const file of files) {
       // Create unique filename
       const fileName = `${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
-      
+
       const blob = await put(fileName, file, {
         access: 'public',
       });
-      
+
       uploadedUrls.push(blob.url);
     }
 
