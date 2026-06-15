@@ -15,6 +15,7 @@ export default function GrandFinale() {
       try {
         const res = await fetch("/api/photos");
         const data = await res.json();
+        console.log(data)
         if (data.photos) {
           setPhotos(data.photos);
         }
@@ -109,7 +110,7 @@ export default function GrandFinale() {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, delay: 2.5 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
             className="w-full"
           >
             <div className="text-center mb-10">
@@ -125,7 +126,7 @@ export default function GrandFinale() {
                   key={index}
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: 3 + Math.min(index, 10) * 0.2 }}
+                  transition={{ duration: 1, delay: 0.5 + Math.min(index, 10) * 0.2 }}
                   className="relative aspect-4/5 rounded-xl overflow-hidden group border border-zinc-800/50"
                 >
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors z-10" />
@@ -133,6 +134,7 @@ export default function GrandFinale() {
                     src={url}
                     alt={`Memory ${index + 1}`}
                     fill
+                    unoptimized={true}
                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
