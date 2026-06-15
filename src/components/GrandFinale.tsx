@@ -15,7 +15,6 @@ export default function GrandFinale() {
       try {
         const res = await fetch("/api/photos");
         const data = await res.json();
-        console.log(data)
         if (data.photos) {
           setPhotos(data.photos);
         }
