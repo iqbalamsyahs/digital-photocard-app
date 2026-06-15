@@ -16,12 +16,31 @@ export default function PhotoUpload() {
     setIsUploading(true);
     setUploadSuccess(false);
 
-    const formData = new FormData();
-    for (let i = 0; i < files.length; i++) {
-      formData.append("file", files[i]);
-    }
-
     try {
+      const { default: imageCompression } = await import("browser-image-compression");
+      
+      const formData = new FormData();
+      
+      // Compress each file before appending
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        
+        // Skip compression for non-images
+        if (!file.type.startsWith("image/")) {
+          formData.append("file", file);
+          continue;
+        }
+
+        const options = {
+          maxSizeMB: 1,
+          maxWidthOrHeight: 1920,
+          useWebWorker: true,
+        };
+
+        const compressedFile = await imageCompression(file, options);
+        formData.append("file", compressedFile, file.name);
+      }
+
       const res = await fetch("/api/upload", {
         method: "POST",
         body: formData,
@@ -31,11 +50,13 @@ export default function PhotoUpload() {
         setUploadSuccess(true);
         setTimeout(() => setUploadSuccess(false), 3000);
       } else {
-        alert("Gagal mengupload foto.");
+        const errorData = await res.json().catch(() => null);
+        console.error("Upload error response:", errorData);
+        alert(`Gagal mengupload foto: ${errorData?.error || res.statusText}`);
       }
     } catch (error) {
-      console.error(error);
-      alert("Terjadi kesalahan.");
+      console.error("Error during upload or compression:", error);
+      alert("Terjadi kesalahan saat mengupload foto.");
     } finally {
       setIsUploading(false);
     }
