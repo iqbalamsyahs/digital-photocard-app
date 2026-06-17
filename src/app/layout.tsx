@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Rahma Sani | Special Birthday Photocard",
-  description: "A special digital photocard and concert-themed itinerary for Rahma Sani's 30th Birthday.",
+  title: "Rahmah Sani | Special Birthday Photocard",
+  description: "A special digital photocard and concert-themed itinerary for Rahmah Sani's 30th Birthday.",
 };
 
 export default function RootLayout({
