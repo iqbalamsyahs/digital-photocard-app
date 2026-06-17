@@ -36,14 +36,20 @@ export function FrontFace({ isFlipped, onFlip }: FrontFaceProps) {
       />
 
       {/* Logo Hexagon Timbul di Kanan Atas */}
-      <div className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-black/40 backdrop-blur-md rounded-full border border-zinc-300/50 shadow-[inset_0_1px_4px_rgba(255,255,255,0.3)]">
+      <div
+        className="absolute top-4 right-4 z-10 w-8 h-8 flex items-center justify-center bg-black/40 backdrop-blur-md rounded-full border border-zinc-300/50 shadow-[inset_0_1px_4px_rgba(255,255,255,0.3)]"
+        style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+      >
         <svg viewBox="0 0 24 24" className="w-4.5 h-4.5 text-zinc-100 drop-shadow-[0_0_5px_rgba(255,255,255,0.8)]" fill="none" stroke="currentColor" strokeWidth="1.2">
           <path d="M12 2.5L2 8v8l10 5.5 10-5.5V8L12 2.5z" />
         </svg>
       </div>
 
       {/* Gradien Bawah & Tipografi Premium */}
-      <div className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-transparent flex flex-col justify-end p-5 z-10">
+      <div
+        className="absolute inset-0 bg-linear-to-t from-black via-black/60 to-transparent flex flex-col justify-end p-5 z-10"
+        style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+      >
         <div className="w-full space-y-1.5">
           <p className="text-zinc-300 text-[9px] font-sans font-light tracking-[0.2em] uppercase opacity-90">
             EXO PLANET {BIRTHDAY_AGE} Birthday Encore
